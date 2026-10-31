@@ -1,9 +1,10 @@
 # app_config.py
 from flask import Flask
-from flask_migrate import Migrate
-from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from sqlalchemy import MetaData
+from flask_restful import Api
+
 import os
 
 class Config:
@@ -34,6 +35,7 @@ def create_app(env="dev"):
 
     db.init_app(app)
     migrate.init_app(app, db)
+
     api.init_app(app)
 
     return app
@@ -41,3 +43,4 @@ def create_app(env="dev"):
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
 api = Api()
+
